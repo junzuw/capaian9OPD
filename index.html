@@ -40,6 +40,12 @@
       text-align: center;
       transition: transform 0.2s;
     }
+      /* CSS lama kamu tetap, tambahkan ini: */
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* supaya a jadi block agar grid dan padding tetap terjaga */
+  }
     .card:hover {
       transform: translateY(-5px);
     }
@@ -59,66 +65,75 @@
 
   <h1>Realisasi Fisik & Keuangan 9 OPD</h1>
 
-  <div class="card-container">
+<div class="card-container">
+  <a href="Realisasi9OPD.html#bappeda" class="card-link">
     <div class="card">
-        <a href="Realisasi9OPD.html#bappeda"> 
-            <i class="fas fa-chart-line icon"></i></a>
+      <i class="fas fa-chart-line icon"></i>
       <div class="title">BAPPEDA</div>
     </div>
+  </a>
+
+  <a href="Realisasi9OPD.html#bpbd" class="card-link">
     <div class="card">
-        <a href="Realisasi9OPD.html#bpbd">
-      <i class="fas fa-shield-alt icon"></i></a>
+      <i class="fas fa-shield-alt icon"></i>
       <div class="title">BPBD</div>
     </div>
-    <div class="card">
-        <a href="Realisasi9OPD.html#bmbk">
+  </a>
 
-      <i class="fas fa-road icon"></i></a>
+  <a href="Realisasi9OPD.html#bmbk" class="card-link">
+    <div class="card">
+      <i class="fas fa-road icon"></i>
       <div class="title">BM & BK</div>
     </div>
-    <div class="card">
-        <a href="Realisasi9OPD.html#sdacktr">
+  </a>
 
-      <i class="fas fa-water icon"></i></a>
+  <a href="Realisasi9OPD.html#sdacktr" class="card-link">
+    <div class="card">
+      <i class="fas fa-water icon"></i>
       <div class="title">SDA & CKTR</div>
     </div>
-    <div class="card">
-        <a href="Realisasi9OPD.html#perkimtan">
+  </a>
 
-      <i class="fas fa-home icon"></i></a>
+  <a href="Realisasi9OPD.html#perkimtan" class="card-link">
+    <div class="card">
+      <i class="fas fa-home icon"></i>
       <div class="title">PERKIMTAN</div>
     </div>
-    <div class="card">
-        <a href="Realisasi9OPD.html#kominfo">
+  </a>
 
-      <i class="fas fa-wifi icon"></i></a>
+  <a href="Realisasi9OPD.html#kominfo" class="card-link">
+    <div class="card">
+      <i class="fas fa-wifi icon"></i>
       <div class="title">KOMINFO</div>
     </div>
-    <div class="card">
-        <a href="Realisasi9OPD.html#dishub">
+  </a>
 
-      <i class="fas fa-bus icon"></i></a>
+  <a href="Realisasi9OPD.html#dishub" class="card-link">
+    <div class="card">
+      <i class="fas fa-bus icon"></i>
       <div class="title">DISHUB</div>
     </div>
-    <div class="card">
-        <a href="Realisasi9OPD.html#dispora">
+  </a>
 
-      <i class="fas fa-running icon"></i></a>
+  <a href="Realisasi9OPD.html#dispora" class="card-link">
+    <div class="card">
+      <i class="fas fa-running icon"></i>
       <div class="title">DISPORA</div>
     </div>
-    <div class="card">
-        <a href="Realisasi9OPD.html#barjas">
+  </a>
 
-      <i class="fas fa-briefcase icon"></i></a>
+  <a href="Realisasi9OPD.html#barjas" class="card-link">
+    <div class="card">
+      <i class="fas fa-briefcase icon"></i>
       <div class="title">BARJAS</div>
     </div>
-    <div class="card">
-      <i class="fas fa-table icon"></i>
-      <div class="title">REKAP</div>
-    </div>
+  </a>
 
-
+  <div class="card">
+    <i class="fas fa-table icon"></i>
+    <div class="title">REKAP</div>
   </div>
+</div>
 
 </body>
 </html>
