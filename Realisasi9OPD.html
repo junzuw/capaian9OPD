@@ -380,16 +380,29 @@ anchor: function(context) {
 dataDivisi.forEach(createCard);
 animateBars();
   // Scroll otomatis ke #hash jika ada di URL
-if (window.location.hash) {
-  const targetId = window.location.hash.slice(1);
-  const checkExist = setInterval(() => {
-    const el = document.getElementById(targetId);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      clearInterval(checkExist);
+<script>
+  function scrollToHashIfExists() {
+    const hash = window.location.hash;
+    if (hash) {
+      const el = document.querySelector(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
     }
-  }, 200);
-}
+  }
+
+  // Tambahkan ini setelah data selesai dimuat
+  fetch('https://sheet.best/api/sheets/xxxxxx') // <-- sesuaikan URL kamu
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(divisi => {
+        createCard(divisi); // ini fungsi kamu
+      });
+      animateBars(); // jika ada animasi
+      scrollToHashIfExists(); // ⬅️ Tambahkan ini terakhir
+    });
+</script>
+
 
 </script>
 
