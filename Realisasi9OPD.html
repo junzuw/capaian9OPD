@@ -379,6 +379,18 @@ anchor: function(context) {
 
 dataDivisi.forEach(createCard);
 animateBars();
+  // Scroll otomatis ke #hash jika ada di URL
+if (window.location.hash) {
+  const targetId = window.location.hash.slice(1);
+  const checkExist = setInterval(() => {
+    const el = document.getElementById(targetId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      clearInterval(checkExist);
+    }
+  }, 200);
+}
+
 </script>
 
 <footer id="footer">
