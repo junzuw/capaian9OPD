@@ -131,135 +131,32 @@
 <div class="container" id="cards-container"></div>
 
 <script>
-const dataDivisi = [
-   {
-    id: 'bappeda',
-    nama: '> BAPPELITBANGDA <',
-    dataBulan1: {
-      alokasi: 41907775472,
-      realisasi: 20000000000,
-      persFisik: 78.56
-    },
-    dataTotal: {
-      alokasi: 41907775472,
-      realisasi: 20953887710,
-      persFisik: 34.56
-    }
-  },
-  {
-    id: 'bpbd',
-    nama: '> BPBD <',
-    dataBulan1: {
-      alokasi: 50000000000,
-      realisasi: 52500000000,
-      persFisik: 67.90
-    },
-    dataTotal: {
-      alokasi: 50000000000,
-      realisasi: 9000000000,
-      persFisik: 50.89
-    }
-  },
-  {
-    id: 'bmbk',
-    nama: '> BM & BK <',
-    dataBulan1: {
-      alokasi: 30000000000,
-      realisasi: 6000000000,
-      persFisik: 99
-    },
-    dataTotal: {
-      alokasi: 35000000000,
-      realisasi: 20000000000,
-      persFisik: 15.99
-    }
-  },
-  {
-    id: 'sdacktr',
-    nama: '> SDA & CKTR <',
-    dataBulan1: {
-      alokasi: 35000000000,
-      realisasi: 20000000000,
-      persFisik: 99
-    },
-    dataTotal: {
-      alokasi: 35000000000,
-      realisasi: 20000000000,
-      persFisik: 15.99
-    }
-  },
-  {
-    id: 'perkimtan',
-    nama: '> PERKIMTAN <',
-    dataBulan1: {
-      alokasi: 35000000000,
-      realisasi: 20000000000,
-      persFisik: 99
-    },
-    dataTotal: {
-      alokasi: 35000000000,
-      realisasi: 20000000000,
-      persFisik: 15.99
-    }
-  },
-  {
-    id: 'kominfo',
-    nama: '> KOMINFO <',
-    dataBulan1: {
-      alokasi: 35000000000,
-      realisasi: 20000000000,
-      persFisik: 99
-    },
-    dataTotal: {
-      alokasi: 35000000000,
-      realisasi: 20000000000,
-      persFisik: 15.99
-    }
-  },
-  {
-    id: 'dishub',
-    nama: '> DISHUB <',
-    dataBulan1: {
-      alokasi: 35000000000,
-      realisasi: 20000000000,
-      persFisik: 99
-    },
-    dataTotal: {
-      alokasi: 35000000000,
-      realisasi: 20000000000,
-      persFisik: 15.99
-    }
-  },
-  {
-    id: 'dispora',
-    nama: '> DISPORA <',
-    dataBulan1: {
-      alokasi: 35000000000,
-      realisasi: 20000000000,
-      persFisik: 99
-    },
-    dataTotal: {
-      alokasi: 35000000000,
-      realisasi: 20000000000,
-      persFisik: 15.99
-    }
-  },
-  {
-    id: 'barjas',
-    nama: '> BARJAS <',
-    dataBulan1: {
-      alokasi: 35000000000,
-      realisasi: 20000000000,
-      persFisik: 99
-    },
-    dataTotal: {
-      alokasi: 35000000000,
-      realisasi: 20000000000,
-      persFisik: 15.99
-    }
-  },
+fetch('https://api.sheetbest.com/sheets/edb09179-6519-4bba-90e0-e15c1e40804e') // Ganti dengan URL Sheet.best kamu
+  .then(res => res.json())
+  .then(data => {
+    data.forEach(divisi => {
+      divisi.dataBulan1 = {
+        alokasi: Number(divisi.alokasi_b1),
+        realisasi: Number(divisi.realisasi_b1),
+        persFisik: Number(divisi.fisik_b1)
+      };
+      divisi.dataTotal = {
+        alokasi: Number(divisi.alokasi_total),
+        realisasi: Number(divisi.realisasi_total),
+        persFisik: Number(divisi.fisik_total)
+      };
 
-];
+      ['dataBulan1', 'dataTotal'].forEach(key => {
+        const d = divisi[key];
+        d.sisa = d.alokasi - d.realisasi;
+        d.persKeu = d.alokasi ? (d.realisasi / d.alokasi) * 100 : 0;
+      });
+
+      createCard(divisi);
+    });
+
+    animateBars();
+  });
 
 // Hitung otomatis sisa dan persKeu
 dataDivisi.forEach(divisi => {
